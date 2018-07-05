@@ -1,5 +1,5 @@
 '''
-	Ryu Ishibashi
+	Developed by Raiu
 '''
 # encoding=utf8
 
