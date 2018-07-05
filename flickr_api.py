@@ -17,8 +17,7 @@ template_url = 'https://farm%s.staticflickr.com/%s/%s_%s.jpg'
 
 class Flickr_API_Class:
 	# set initial properties
-	def __init__(self, user_input_file_name, woe_id, date_from, date_to):
-		self.output_file_name_name = user_input_file_name
+	def __init__(self, woe_id, date_from, date_to):
 		self.woe_id = woe_id
 		self.date_from = date_from
 		self.date_to = date_to
