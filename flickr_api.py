@@ -10,13 +10,19 @@ import requests
 
 
 # find woeid from => https://www.flickr.com/places/info/
-API_KEY = 'faac20e291025ba6bdc0331ff92c63ee'
+API_KEY = ''
 url = 'https://api.flickr.com/services/rest/'
 template_url = 'https://farm%s.staticflickr.com/%s/%s_%s.jpg'
 
 
 class Flickr_API_Class:
 	# set initial properties
+	'''
+		you need to input 3 properties
+			* woe_id
+			* date_from
+			* date_to
+	'''
 	def __init__(self, woe_id, date_from, date_to):
 		self.woe_id = woe_id
 		self.date_from = date_from
@@ -48,6 +54,13 @@ class Flickr_API_Class:
 		print(json.dumps(self.response, sort_keys=True, indent=2))
 
 
+
+	'''
+		you need to point what page do you want to see
+		250 images is shoen for each page
+		The number of pages is shown when you call this Class 
+			(For more detail check __init__)
+	'''
 	def search(self, page):
 		self.c_page_number = page
 		self.request  = requests.get(url, params=self.properties)
@@ -56,6 +69,11 @@ class Flickr_API_Class:
 		print(json.dumps(self.response, sort_keys=True, indent=2))
 
 
+
+	'''
+		you need to input the output file name
+		No need to add ".csv". it is automativally added
+	'''
 	def make_csv(self, output_file_name):
 		self.c_page_number = 1
 		self.place = ''
@@ -130,6 +148,7 @@ class Flickr_API_Class:
 			}
 
 
+# Samples below
 API = Flickr_API_Class("test", "2345853", '2015-08-20 00:00:00', '2016-08-30 00:00:00')
 API.make_csv("test")
 
